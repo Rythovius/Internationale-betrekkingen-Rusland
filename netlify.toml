@@ -1,10 +1,9 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = ""
   
 [build.environment]
   NODE_VERSION = "18"
-  NEXT_USE_NETLIFY_EDGE = "true"
   
 [[plugins]]
   package = "@netlify/plugin-nextjs"
@@ -14,3 +13,10 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
